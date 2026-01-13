@@ -1,14 +1,24 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, ShoppingBag, Heart, User, Menu, X, Baby } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, ShoppingBag, Heart, User, Menu, X, Baby, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/FirebaseAuthContext';
 import { cn } from '@/lib/utils';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { itemCount, openCart } = useCart();
+  const { user, signOutUser, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    const result = await signOutUser();
+    if (!result.error) {
+      navigate('/');
+    }
+  };
 
   const navLinks = [
     { name: 'Shop All', href: '/products' },
@@ -82,13 +92,41 @@ export function Header() {
               <Heart className="h-5 w-5" />
             </Link>
 
-            <Link
-              to="/account"
-              className="hidden sm:flex p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </Link>
+            {!loading && user ? (
+              <div className="hidden sm:flex items-center gap-1">
+                <Link
+                  to="/profile"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  aria-label="Profile"
+                >
+                  <User className="h-5 w-5" />
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleSignOut}
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  aria-label="Sign Out"
+                >
+                  <LogOut className="h-5 w-5" />
+                </Button>
+              </div>
+            ) : (
+              <div className="hidden sm:flex items-center gap-1">
+                <Link
+                  to="/login"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/signup"
+                  className="p-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
 
             <button
               onClick={openCart}
@@ -149,9 +187,28 @@ export function Header() {
             <Link to="/wishlist" className="flex items-center gap-2 text-muted-foreground">
               <Heart className="h-5 w-5" /> Wishlist
             </Link>
-            <Link to="/account" className="flex items-center gap-2 text-muted-foreground">
-              <User className="h-5 w-5" /> Account
-            </Link>
+            {!loading && user ? (
+              <>
+                <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
+                  <User className="h-5 w-5" /> Profile
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                >
+                  <LogOut className="h-5 w-5" /> Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="flex items-center gap-2 text-muted-foreground">
+                  <User className="h-5 w-5" /> Sign In
+                </Link>
+                <Link to="/signup" className="flex items-center gap-2 text-primary font-medium">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </div>
