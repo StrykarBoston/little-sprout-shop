@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, Star } from 'lucide-react';
 import { Product } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -12,13 +12,15 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
-  const { addItem, openCart } = useCart();
+  const navigate = useNavigate();
+  const { addItem } = useCart();
   const { addItem: addToWishlist, isInWishlist } = useWishlist();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     addItem(product);
-    openCart();
+    // Navigate to cart page after adding item
+    navigate('/cart');
   };
 
   const discount = product.originalPrice

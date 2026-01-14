@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   ChevronLeft, 
   Star, 
@@ -21,10 +21,11 @@ import { cn } from '@/lib/utils';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === id);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
-  const { addItem, openCart } = useCart();
+  const { addItem } = useCart();
 
   if (!product) {
     return (
@@ -43,7 +44,8 @@ export default function ProductDetailPage() {
     for (let i = 0; i < quantity; i++) {
       addItem(product);
     }
-    openCart();
+    // Navigate to cart page after adding items
+    navigate('/cart');
   };
 
   const relatedProducts = products
