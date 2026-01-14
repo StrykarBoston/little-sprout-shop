@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { itemCount, openCart } = useCart();
+  const { itemCount } = useCart();
   const { user, loading } = useAuth();
   const navigate = useNavigate();
 
@@ -112,8 +112,8 @@ export function Header() {
               </div>
             )}
 
-            <button
-              onClick={openCart}
+            <Link
+              to="/cart"
               className="relative p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               aria-label="Cart"
             >
@@ -123,7 +123,7 @@ export function Header() {
                   {itemCount}
                 </span>
               )}
-            </button>
+            </Link>
           </div>
         </div>
 
