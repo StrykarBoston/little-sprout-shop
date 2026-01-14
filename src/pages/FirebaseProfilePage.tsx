@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { User, Mail, Package, ShoppingBag, LogOut, Settings, CreditCard, MapPin, Shield, Bell, Edit2, Camera } from 'lucide-react';
+import { User, Mail, Package, ShoppingBag, LogOut, Settings, CreditCard, MapPin, Shield, Bell, Edit2, Camera, Gift, Star, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -149,17 +149,23 @@ const FirebaseProfilePage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <Button variant="outline" className="w-full justify-start">
-                    <User className="mr-2 h-4 w-4" />
-                    Edit Profile
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/edit">
+                      <User className="mr-2 h-4 w-4" />
+                      Edit Profile
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Bell className="mr-2 h-4 w-4" />
-                    Notification Preferences
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/notifications">
+                      <Bell className="mr-2 h-4 w-4" />
+                      Notification Preferences
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Shield className="mr-2 h-4 w-4" />
-                    Privacy & Security
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/privacy">
+                      <Shield className="mr-2 h-4 w-4" />
+                      Privacy & Security
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
@@ -179,18 +185,74 @@ const FirebaseProfilePage = () => {
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <Button variant="outline" className="w-full justify-start" asChild>
-                    <Link to="/orders">
+                    <Link to="/profile/orders">
                       <Package className="mr-2 h-4 w-4" />
                       Order History
                     </Link>
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    Shipping Addresses
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/addresses">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      Shipping Addresses
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <CreditCard className="mr-2 h-4 w-4" />
-                    Payment Methods
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/payment">
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      Payment Methods
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Rewards & Benefits */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Gift className="h-5 w-5" />
+                  Rewards & Benefits
+                </CardTitle>
+                <CardDescription>
+                  Manage your rewards and gift cards
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/rewards">
+                      <Star className="mr-2 h-4 w-4" />
+                      Welcome Rewards
+                    </Link>
+                  </Button>
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/gift-cards">
+                      <Gift className="mr-2 h-4 w-4" />
+                      Gift Cards
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Support */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <HelpCircle className="h-5 w-5" />
+                  Support
+                </CardTitle>
+                <CardDescription>
+                  Get help and contact our support team
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <Button variant="outline" className="w-full justify-start" asChild>
+                    <Link to="/profile/support">
+                      <HelpCircle className="mr-2 h-4 w-4" />
+                      Help & Support
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
@@ -237,26 +299,6 @@ const FirebaseProfilePage = () => {
                     }
                   </p>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Quick Actions */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild>
-                  <Link to="/products">Continue Shopping</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link to="/cart">View Cart</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link to="/support">Get Support</Link>
-                </Button>
               </div>
             </CardContent>
           </Card>

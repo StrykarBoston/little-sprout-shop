@@ -23,6 +23,15 @@ import SizeGuidePage from "./pages/SizeGuidePage";
 import ContactPage from "./pages/ContactPage";
 import PrivacyTermsPage from "./pages/PrivacyTermsPage";
 import WishlistPage from "./pages/WishlistPage";
+import EditProfilePage from "./pages/profile/EditProfilePage";
+import NotificationPreferencesPage from "./pages/profile/NotificationPreferencesPage";
+import PrivacySecurityPage from "./pages/profile/PrivacySecurityPage";
+import OrderHistoryPage from "./pages/profile/OrderHistoryPage";
+import ShippingAddressesPage from "./pages/profile/ShippingAddressesPage";
+import PaymentMethodsPage from "./pages/profile/PaymentMethodsPage";
+import GiftCardsPage from "./pages/profile/GiftCardsPage";
+import WelcomeRewardsPage from "./pages/profile/WelcomeRewardsPage";
+import SupportPage from "./pages/profile/SupportPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +66,78 @@ const App = () => (
                 element={
                   <FirebaseProtectedRoute>
                     <FirebaseProfilePage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/edit" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <EditProfilePage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/notifications" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <NotificationPreferencesPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/privacy" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <PrivacySecurityPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/orders" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <OrderHistoryPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/addresses" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <ShippingAddressesPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/payment" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <PaymentMethodsPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/gift-cards" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <GiftCardsPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/rewards" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <WelcomeRewardsPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile/support" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <SupportPage />
                   </FirebaseProtectedRoute>
                 } 
               />
