@@ -27,6 +27,8 @@ interface CartContextType extends CartState {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+export { CartContext };
+
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'ADD_ITEM': {
@@ -134,12 +136,4 @@ export function CartProvider({ children }: { children: ReactNode }) {
       {children}
     </CartContext.Provider>
   );
-}
-
-export function useCart() {
-  const context = useContext(CartContext);
-  if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
-  return context;
 }

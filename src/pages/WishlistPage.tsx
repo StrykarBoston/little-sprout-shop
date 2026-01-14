@@ -4,7 +4,7 @@ import { Heart, ShoppingBag, Trash2, Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/context/WishlistContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';

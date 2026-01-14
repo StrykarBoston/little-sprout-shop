@@ -15,7 +15,7 @@ import {
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/ProductCard';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { products } from '@/data/products';
 import { cn } from '@/lib/utils';
 

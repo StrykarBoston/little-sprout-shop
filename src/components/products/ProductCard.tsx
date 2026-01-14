@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, Star } from 'lucide-react';
 import { Product } from '@/types';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/context/WishlistContext';
 import { cn } from '@/lib/utils';
 

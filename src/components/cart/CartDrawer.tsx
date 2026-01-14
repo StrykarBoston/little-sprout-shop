@@ -1,6 +1,6 @@
 import { X, Plus, Minus, ShoppingBag, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

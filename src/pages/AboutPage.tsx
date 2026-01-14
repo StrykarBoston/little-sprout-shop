@@ -4,7 +4,7 @@ import { Search, ShoppingBag, Heart, User, Menu, X, Baby, Shield, Leaf, Award } 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';

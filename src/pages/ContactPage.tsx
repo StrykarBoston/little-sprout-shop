@@ -30,7 +30,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';

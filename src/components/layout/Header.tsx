@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingBag, Heart, User, Menu, X, Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
 import { cn } from '@/lib/utils';
 

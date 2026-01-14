@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingBag, Plus, Minus, Trash2, ArrowLeft, Tag } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/hooks/useCart';
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, subtotal, clearCart } = useCart();
