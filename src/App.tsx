@@ -32,6 +32,7 @@ import PaymentMethodsPage from "./pages/profile/PaymentMethodsPage";
 import GiftCardsPage from "./pages/profile/GiftCardsPage";
 import WelcomeRewardsPage from "./pages/profile/WelcomeRewardsPage";
 import SupportPage from "./pages/profile/SupportPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -138,6 +139,14 @@ const App = () => (
                 element={
                   <FirebaseProtectedRoute>
                     <SupportPage />
+                  </FirebaseProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/order-confirmation/:orderId" 
+                element={
+                  <FirebaseProtectedRoute>
+                    <OrderConfirmationPage />
                   </FirebaseProtectedRoute>
                 } 
               />

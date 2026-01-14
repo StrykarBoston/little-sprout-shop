@@ -38,6 +38,7 @@ import { useAuth } from '@/context/FirebaseAuthContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { Product } from '@/types';
+import { createOrder, OrderRequest } from '@/services/orderService';
 
 // Mock cart data
 const mockCartItems = [
@@ -127,11 +128,80 @@ const CheckoutPage = () => {
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
-  const handleCheckout = (e: React.FormEvent) => {
+  const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In real app, process payment and create order
-    console.log('Processing checkout...');
-    navigate('/order-confirmation');
+    
+    try {
+      // Show loading state
+      const submitButton = e.currentTarget as HTMLButtonElement;
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<div class="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent inline-block mr-2"></div> Processing...';
+      submitButton.disabled = true;
+      
+      // Prepare order data
+      const orderRequest: OrderRequest = {
+        items: cartItems.map(item => ({
+          id: item.id.toString(),
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image,
+          size: item.size,
+          color: item.color
+        })),
+        shippingAddress: {
+          name: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
+          street: shippingInfo.address,
+          city: shippingInfo.city,
+          state: shippingInfo.state,
+          zip: shippingInfo.zipCode,
+          country: shippingInfo.country
+        },
+        billingAddress: {
+          name: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
+          street: shippingInfo.address,
+          city: shippingInfo.city,
+          state: shippingInfo.state,
+          zip: shippingInfo.zipCode,
+          country: shippingInfo.country
+        },
+        paymentMethod: {
+          type: paymentMethod as 'card' | 'paypal' | 'apple' | 'google',
+          last4: paymentInfo.cardNumber.slice(-4),
+          brand: paymentInfo.cardName
+        },
+        subtotal: calculateSubtotal(),
+        shipping: calculateShipping(),
+        tax: calculateTax(),
+        total: calculateTotal()
+      };
+      
+      // Create order via service
+      const orderResponse = await createOrder(orderRequest);
+      
+      if (orderResponse.success) {
+        // Redirect to order confirmation page
+        navigate(`/order-confirmation/${orderResponse.orderId}`);
+        
+        // Send confirmation email (in real app)
+        if (user?.email) {
+          // await sendOrderConfirmationEmail(orderResponse.orderId, user.email);
+        }
+      } else {
+        // Handle error
+        alert('Order processing failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('An error occurred while processing your order. Please try again.');
+    } finally {
+      // Restore button state
+      const submitButton = e.currentTarget as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.innerHTML = originalText || 'Place Order';
+        submitButton.disabled = false;
+      }
+    }
   };
 
   return (
