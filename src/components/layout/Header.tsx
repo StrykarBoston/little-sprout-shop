@@ -25,39 +25,40 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 glass border-b border-border/50">
       {/* Top banner */}
-      <div className="bg-primary text-primary-foreground text-center py-2 text-sm font-medium">
-        🎉 Free shipping on orders over $50! Use code: BABYJOY
+      <div className="bg-primary text-primary-foreground text-center py-1 sm:py-2 text-xs sm:text-sm font-medium">
+        <span className="hidden sm:inline">🎉 Free shipping on orders over $50! Use code: BABYJOY</span>
+        <span className="sm:hidden">🎉 Free shipping over $50!</span>
       </div>
 
       <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 -ml-2 text-foreground"
+            className="md:hidden p-2 -ml-2 text-foreground touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
           </button>
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Baby className="h-6 w-6 text-primary-foreground" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Baby className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
             </div>
-            <span className="text-xl md:text-2xl font-heading font-bold text-foreground">
+            <span className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-foreground">
               BabyBloom
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+                  "px-3 lg:px-4 py-2 text-sm font-medium rounded-lg transition-colors",
                   "text-muted-foreground hover:text-foreground hover:bg-accent",
                   link.name === 'Sale' && "text-destructive hover:text-destructive"
                 )}
@@ -71,41 +72,41 @@ export function Header() {
           <div className="flex items-center gap-1">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors touch-manipulation"
               aria-label="Search"
             >
-              <Search className="h-5 w-5" />
+              <Search className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
 
             <Link
               to="/wishlist"
-              className="hidden sm:flex p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              className="flex p-1.5 sm:p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors touch-manipulation"
               aria-label="Wishlist"
             >
-              <Heart className="h-5 w-5" />
+              <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
 
             {!loading && user ? (
-              <div className="hidden sm:flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <Link
                   to="/profile"
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  className="p-1.5 sm:p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors touch-manipulation"
                   aria-label="Profile"
                 >
-                  <User className="h-5 w-5" />
+                  <User className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
               </div>
             ) : (
               <div className="hidden sm:flex items-center gap-1">
                 <Link
                   to="/login"
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium"
+                  className="px-2 lg:px-3 py-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-xs sm:text-sm font-medium touch-manipulation"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
-                  className="p-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+                  className="px-2 lg:px-3 py-1.5 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-xs sm:text-sm font-medium touch-manipulation"
                 >
                   Sign Up
                 </Link>
@@ -114,12 +115,12 @@ export function Header() {
 
             <Link
               to="/cart"
-              className="relative p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              className="relative p-1.5 sm:p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors touch-manipulation"
               aria-label="Cart"
             >
-              <ShoppingBag className="h-5 w-5" />
+              <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5" />
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center animate-scale-in">
+                <span className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center animate-scale-in">
                   {itemCount}
                 </span>
               )}
@@ -131,15 +132,15 @@ export function Header() {
         <div
           className={cn(
             "overflow-hidden transition-all duration-300",
-            isSearchOpen ? "max-h-20 pb-4" : "max-h-0"
+            isSearchOpen ? "max-h-20 py-3 sm:py-4" : "max-h-0"
           )}
         >
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search for baby products..."
-              className="w-full h-12 pl-12 pr-4 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full h-10 sm:h-12 pl-10 sm:pl-12 pr-4 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm sm:text-base"
             />
           </div>
         </div>
@@ -159,7 +160,7 @@ export function Header() {
               to={link.href}
               onClick={() => setIsMenuOpen(false)}
               className={cn(
-                "px-4 py-3 text-base font-medium rounded-lg transition-colors",
+                "px-4 py-3 text-base font-medium rounded-lg transition-colors touch-manipulation",
                 "text-foreground hover:bg-accent",
                 link.name === 'Sale' && "text-destructive"
               )}
@@ -167,19 +168,19 @@ export function Header() {
               {link.name}
             </Link>
           ))}
-          <div className="flex gap-4 mt-4 px-4">
-            <Link to="/wishlist" className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex flex-col gap-4 mt-4 px-4 pt-4 border-t border-border">
+            <Link to="/wishlist" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Heart className="h-5 w-5" /> Wishlist
             </Link>
             {!loading && user ? (
               <>
-                <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
+                <Link to="/profile" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                   <User className="h-5 w-5" /> Profile
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/login" className="flex items-center gap-2 text-muted-foreground">
+                <Link to="/login" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                   <User className="h-5 w-5" /> Sign In
                 </Link>
                 <Link to="/signup" className="flex items-center gap-2 text-primary font-medium">

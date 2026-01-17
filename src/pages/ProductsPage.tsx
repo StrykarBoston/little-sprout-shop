@@ -262,9 +262,9 @@ export default function ProductsPage() {
             {filteredProducts.length > 0 ? (
               <div
                 className={cn(
-                  "grid gap-6",
+                  "grid gap-4 sm:gap-6",
                   viewMode === 'grid'
-                    ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
+                    ? "grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
                     : "grid-cols-1"
                 )}
               >
@@ -279,8 +279,8 @@ export default function ProductsPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16">
-                <p className="text-muted-foreground mb-4">
+              <div className="text-center py-12 sm:py-16">
+                <p className="text-muted-foreground mb-4 px-4">
                   No products found matching your criteria.
                 </p>
                 <Button
@@ -288,6 +288,7 @@ export default function ProductsPage() {
                     setSelectedCategory('all');
                     setPriceRange('all');
                   }}
+                  className="w-full sm:w-auto"
                 >
                   Clear Filters
                 </Button>

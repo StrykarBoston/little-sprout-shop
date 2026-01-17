@@ -8,15 +8,45 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        md: "2rem",
+        lg: "2.5rem",
+        xl: "3rem",
+        "2xl": "4rem",
+      },
       screens: {
-        "2xl": "1400px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1920px", // Large desktop/TV
       },
     },
     extend: {
       fontFamily: {
         heading: ["Quicksand", "sans-serif"],
         body: ["Nunito", "sans-serif"],
+      },
+      fontSize: {
+        'xs-responsive': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.05em' }],
+        'sm-responsive': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.025em' }],
+        'base-responsive': ['1rem', { lineHeight: '1.5rem', letterSpacing: '0' }],
+        'lg-responsive': ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.025em' }],
+        'xl-responsive': ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.025em' }],
+        '2xl-responsive': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.05em' }],
+        '3xl-responsive': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.05em' }],
+        '4xl-responsive': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.05em' }],
+        '5xl-responsive': ['3rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+        '6xl-responsive': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+        '144': '36rem',
       },
       colors: {
         border: "hsl(var(--border))",

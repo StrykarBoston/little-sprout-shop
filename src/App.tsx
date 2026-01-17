@@ -33,6 +33,8 @@ import GiftCardsPage from "./pages/profile/GiftCardsPage";
 import WelcomeRewardsPage from "./pages/profile/WelcomeRewardsPage";
 import SupportPage from "./pages/profile/SupportPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +61,8 @@ const App = () => (
               <Route path="/returns" element={<ReturnsPage />} />
               <Route path="/size-guide" element={<SizeGuidePage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogDetailPage />} />
               <Route path="/privacy-terms" element={<PrivacyTermsPage />} />
               <Route path="/login" element={<FirebaseLoginPage />} />
               <Route path="/signup" element={<FirebaseSignupPage />} />

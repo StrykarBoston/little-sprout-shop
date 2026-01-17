@@ -38,12 +38,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
     <Link
       to={`/product/${product.id}`}
       className={cn(
-        "group block card-baby p-0 hover:-translate-y-2 transition-all duration-300",
+        "group block card-baby p-0 hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-300",
         className
       )}
     >
       {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden rounded-t-2xl bg-muted">
+      <div className="relative aspect-square overflow-hidden rounded-t-xl sm:rounded-t-2xl bg-muted">
         <img
           src={product.image}
           alt={product.name}
@@ -55,7 +55,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
         {product.badge && (
           <span
             className={cn(
-              "absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide",
+              "absolute top-2 sm:top-3 left-2 sm:left-3 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wide",
               badgeStyles[product.badge]
             )}
           >
@@ -65,7 +65,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
         {/* Discount Badge */}
         {discount > 0 && !product.badge && (
-          <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-destructive text-destructive-foreground">
+          <span className="absolute top-2 sm:top-3 left-2 sm:left-3 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs font-bold bg-destructive text-destructive-foreground">
             -{discount}%
           </span>
         )}
@@ -77,30 +77,31 @@ export function ProductCard({ product, className }: ProductCardProps) {
             addToWishlist(product);
           }}
           className={cn(
-            "absolute top-3 right-3 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-background transition-all opacity-0 group-hover:opacity-100",
+            "absolute top-2 sm:top-3 right-2 sm:right-3 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-background transition-all opacity-0 group-hover:opacity-100 touch-manipulation",
             isInWishlist(product.id) && "text-destructive"
           )}
           aria-label="Add to wishlist"
         >
-          <Heart className={cn("h-4 w-4", isInWishlist(product.id) && "fill-current")} />
+          <Heart className={cn("h-3 w-3 sm:h-4 sm:w-4", isInWishlist(product.id) && "fill-current")} />
         </button>
 
         {/* Quick Add Button */}
-        <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+        <div className="absolute inset-x-2 sm:inset-x-3 bottom-2 sm:bottom-3 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
           <Button
             onClick={handleAddToCart}
             variant="default"
             size="sm"
-            className="w-full gap-2"
+            className="w-full gap-1.5 sm:gap-2 text-xs sm:text-sm"
           >
-            <ShoppingBag className="h-4 w-4" />
-            Add to Cart
+            <ShoppingBag className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden xs:inline">Add to Cart</span>
+            <span className="xs:hidden">Add</span>
           </Button>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         {/* Category */}
         {product.ageRange && (
           <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
@@ -109,18 +110,18 @@ export function ProductCard({ product, className }: ProductCardProps) {
         )}
 
         {/* Title */}
-        <h3 className="font-heading font-semibold text-foreground mt-1 line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="font-heading font-semibold text-foreground mt-1 line-clamp-2 group-hover:text-primary transition-colors text-sm sm:text-base">
           {product.name}
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-1 mt-2">
+        <div className="flex items-center gap-1 mt-1.5 sm:mt-2">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
                 className={cn(
-                  "h-3.5 w-3.5",
+                  "h-3 w-3 sm:h-3.5 sm:w-3.5",
                   i < Math.floor(product.rating)
                     ? "fill-yellow-400 text-yellow-400"
                     : "fill-muted text-muted"
@@ -134,12 +135,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
         </div>
 
         {/* Price */}
-        <div className="flex items-center gap-2 mt-2">
-          <span className="text-lg font-bold text-primary">
+        <div className="flex items-center gap-2 mt-1.5 sm:mt-2">
+          <span className="text-base sm:text-lg font-bold text-primary">
             ${product.price.toFixed(2)}
           </span>
           {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through">
+            <span className="text-xs sm:text-sm text-muted-foreground line-through">
               ${product.originalPrice.toFixed(2)}
             </span>
           )}
