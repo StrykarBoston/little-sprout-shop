@@ -74,6 +74,50 @@ const CheckoutPage = () => {
       alert('Your cart is empty. Please add items before checkout.');
       return;
     }
+
+    // Validate form inputs
+    if (!shippingInfo.firstName.trim() || !shippingInfo.lastName.trim() || 
+        !shippingInfo.email.trim() || !shippingInfo.address.trim() || 
+        !shippingInfo.city.trim() || !shippingInfo.state.trim() || 
+        !shippingInfo.zipCode.trim()) {
+      alert('Please fill in all required shipping information fields.');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(shippingInfo.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[\d\s\-+()]+$/;
+    if (shippingInfo.phone && !phoneRegex.test(shippingInfo.phone)) {
+      alert('Please enter a valid phone number.');
+      return;
+    }
+
+    // Payment validation for card payments
+    if (paymentMethod === 'card') {
+      const cardNumberRegex = /^[\d\s]+$/;
+      if (!paymentInfo.cardNumber.trim() || !cardNumberRegex.test(paymentInfo.cardNumber.replace(/\s/g, ''))) {
+        alert('Please enter a valid card number.');
+        return;
+      }
+
+      const cvvRegex = /^\d{3,4}$/;
+      if (!paymentInfo.cvv.trim() || !cvvRegex.test(paymentInfo.cvv)) {
+        alert('Please enter a valid CVV.');
+        return;
+      }
+
+      const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+      if (!paymentInfo.expiryDate.trim() || !expiryRegex.test(paymentInfo.expiryDate)) {
+        alert('Please enter a valid expiry date (MM/YY).');
+        return;
+      }
+    }
     
     // Show loading state
     const submitButton = e.currentTarget as HTMLButtonElement;

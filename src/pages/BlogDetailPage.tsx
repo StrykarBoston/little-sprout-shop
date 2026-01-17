@@ -166,7 +166,9 @@ export default function BlogDetailPage() {
 
             {/* Article Body */}
             <div className="prose prose-lg max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />') }} />
+              <div>{post.content.split('\n').map((paragraph, index) => (
+                <p key={index} className="mb-4">{paragraph}</p>
+              ))}</div>
             </div>
 
             {/* Tags */}
