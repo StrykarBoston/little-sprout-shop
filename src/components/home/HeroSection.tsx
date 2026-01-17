@@ -16,7 +16,7 @@ export function HeroSection() {
           <div className="text-center lg:text-left animate-slide-up">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
-              Trusted by 100,000+ Parents
+              Trusted by 1,00,000+ Indian Parents
             </span>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-4 sm:mb-6">
@@ -26,7 +26,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 px-4 lg:px-0">
-              Premium, organic baby products designed with love. From cozy clothing to gentle care essentials, we've got your bundle of joy covered.
+              Premium, organic baby products designed with love for Indian families. From traditional clothing to gentle care essentials, we've got your bundle of joy covered.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">

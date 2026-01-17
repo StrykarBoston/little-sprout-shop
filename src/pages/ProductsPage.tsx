@@ -17,10 +17,10 @@ const sortOptions = [
 
 const priceRanges = [
   { value: 'all', label: 'All Prices' },
-  { value: '0-25', label: 'Under $25' },
-  { value: '25-50', label: '$25 - $50' },
-  { value: '50-100', label: '$50 - $100' },
-  { value: '100+', label: '$100+' },
+  { value: '0-25', label: 'Under ₹2,500' },
+  { value: '25-50', label: '₹2,500 - ₹5,000' },
+  { value: '50-100', label: '₹5,000 - ₹10,000' },
+  { value: '100+', label: '₹10,000+' },
 ];
 
 export default function ProductsPage() {

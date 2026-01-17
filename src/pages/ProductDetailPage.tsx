@@ -18,6 +18,7 @@ import { ProductCard } from '@/components/products/ProductCard';
 import { useCart } from '@/hooks/useCart';
 import { products } from '@/data/products';
 import { cn } from '@/lib/utils';
+import { formatINR } from '@/utils/currency';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -167,12 +168,12 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="flex items-center gap-4">
               <span className="text-3xl font-bold text-primary">
-                ${product.price.toFixed(2)}
+                {formatINR(product.price)}
               </span>
               {product.originalPrice && (
                 <>
                   <span className="text-xl text-muted-foreground line-through">
-                    ${product.originalPrice.toFixed(2)}
+                    {formatINR(product.originalPrice)}
                   </span>
                   <span className="px-2 py-1 rounded bg-destructive/10 text-destructive text-sm font-bold">
                     Save {discount}%

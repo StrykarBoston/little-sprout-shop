@@ -8,6 +8,7 @@ import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/context/WishlistContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
+import { formatINR } from '@/utils/currency';
 import { Product } from '@/types';
 
 
@@ -155,10 +156,10 @@ const WishlistPage = () => {
 
                       {/* Price */}
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-lg">${item.price}</span>
+                        <span className="font-bold text-lg">{formatINR(item.price)}</span>
                         {item.originalPrice > item.price && (
                           <span className="text-sm text-muted-foreground line-through">
-                            ${item.originalPrice}
+                            {formatINR(item.originalPrice)}
                           </span>
                         )}
                       </div>

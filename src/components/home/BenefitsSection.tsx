@@ -4,7 +4,7 @@ const benefits = [
   {
     icon: Truck,
     title: 'Free Shipping',
-    description: 'Free delivery on orders over $50. Fast and reliable shipping.',
+    description: 'Free delivery on orders over ₹4,000. Fast and reliable shipping.',
     color: 'bg-mint-light text-primary',
   },
   {

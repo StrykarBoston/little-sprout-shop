@@ -107,15 +107,15 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
               <li className="flex items-start gap-2 text-muted-foreground">
                 <Mail className="h-3 w-3 sm:h-4 sm:w-4 mt-0.5 shrink-0" />
-                <span className="break-words">hello@babybloom.com</span>
+                <span className="break-words">hello@babybloom.in</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <Phone className="h-3 w-3 sm:h-4 sm:w-4 mt-0.5 shrink-0" />
-                <span className="break-words">1-800-BABY-BLOOM</span>
+                <span className="break-words">+91 8080-BABY</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mt-0.5 shrink-0" />
-                <span className="break-words">123 Baby Lane<br />San Francisco, CA 94102</span>
+                <span className="break-words">123 Baby Lane<br/>Mumbai, Maharashtra 400001</span>
               </li>
             </ul>
           </div>

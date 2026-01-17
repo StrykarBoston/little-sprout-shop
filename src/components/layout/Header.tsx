@@ -26,8 +26,8 @@ export function Header() {
     <header className="sticky top-0 z-50 glass border-b border-border/50">
       {/* Top banner */}
       <div className="bg-primary text-primary-foreground text-center py-1 sm:py-2 text-xs sm:text-sm font-medium">
-        <span className="hidden sm:inline">🎉 Free shipping on orders over $50! Use code: BABYJOY</span>
-        <span className="sm:hidden">🎉 Free shipping over $50!</span>
+        <span className="hidden sm:inline">🎉 Free shipping on orders over ₹4,000! Use code: BABYJOY</span>
+        <span className="sm:hidden">🎉 Free shipping over ₹4,000!</span>
       </div>
 
       <div className="container">

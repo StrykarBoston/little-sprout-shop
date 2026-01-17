@@ -3,11 +3,12 @@ import { ShoppingBag, Plus, Minus, Trash2, ArrowLeft, Tag } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
+import { formatINR } from '@/utils/currency';
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, subtotal, clearCart } = useCart();
 
-  const shipping = subtotal >= 50 ? 0 : 5.99;
+  const shipping = subtotal >= 4000 ? 0 : 499;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
@@ -78,11 +79,11 @@ export default function CartPage() {
 
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-lg font-bold text-primary">
-                      ${item.product.price.toFixed(2)}
+                      {formatINR(item.product.price)}
                     </span>
                     {item.product.originalPrice && (
                       <span className="text-sm text-muted-foreground line-through">
-                        ${item.product.originalPrice.toFixed(2)}
+                        {formatINR(item.product.originalPrice)}
                       </span>
                     )}
                   </div>
@@ -124,7 +125,7 @@ export default function CartPage() {
 
                 <div className="hidden sm:block text-right">
                   <p className="text-lg font-bold text-foreground">
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    {formatINR(item.product.price * item.quantity)}
                   </p>
                 </div>
               </div>
@@ -163,7 +164,7 @@ export default function CartPage() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
+                  <span className="font-medium">{formatINR(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Shipping</span>
@@ -171,18 +172,18 @@ export default function CartPage() {
                     {shipping === 0 ? (
                       <span className="text-primary">FREE</span>
                     ) : (
-                      `$${shipping.toFixed(2)}`
+                      formatINR(shipping)
                     )}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Tax (8%)</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
+                  <span className="font-medium">{formatINR(tax)}</span>
                 </div>
 
                 {shipping > 0 && (
                   <p className="text-xs text-muted-foreground bg-mint-light p-3 rounded-lg">
-                    Add ${(50 - subtotal).toFixed(2)} more for free shipping!
+                    Add {formatINR(4000 - subtotal)} more for free shipping!
                   </p>
                 )}
 
@@ -192,7 +193,7 @@ export default function CartPage() {
                       Total
                     </span>
                     <span className="font-bold text-xl text-primary">
-                      ${total.toFixed(2)}
+                      {formatINR(total)}
                     </span>
                   </div>
                 </div>

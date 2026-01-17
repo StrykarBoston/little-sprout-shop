@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '@/hooks/useCart';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { formatINR } from '@/utils/currency';
 
 export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, subtotal, itemCount } = useCart();
@@ -73,7 +74,7 @@ export function CartDrawer() {
                       {item.product.name}
                     </h4>
                     <p className="text-primary font-bold">
-                      ${item.product.price.toFixed(2)}
+                      {formatINR(item.product.price)}
                     </p>
                     <div className="flex items-center gap-2 mt-2">
                       <button
@@ -113,7 +114,7 @@ export function CartDrawer() {
           <div className="border-t border-border p-4 space-y-4">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Subtotal</span>
-              <span className="font-bold text-lg">${subtotal.toFixed(2)}</span>
+              <span className="font-bold text-lg">{formatINR(subtotal)}</span>
             </div>
             <p className="text-xs text-muted-foreground text-center">
               Shipping and taxes calculated at checkout

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/context/WishlistContext';
 import { cn } from '@/lib/utils';
+import { formatINR } from '@/utils/currency';
 
 interface ProductCardProps {
   product: Product;
@@ -137,11 +138,11 @@ export function ProductCard({ product, className }: ProductCardProps) {
         {/* Price */}
         <div className="flex items-center gap-2 mt-1.5 sm:mt-2">
           <span className="text-base sm:text-lg font-bold text-primary">
-            ${product.price.toFixed(2)}
+            {formatINR(product.price)}
           </span>
           {product.originalPrice && (
             <span className="text-xs sm:text-sm text-muted-foreground line-through">
-              ${product.originalPrice.toFixed(2)}
+              {formatINR(product.originalPrice)}
             </span>
           )}
         </div>
